@@ -1,14 +1,22 @@
+"use client";
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Leaf, Recycle, ShoppingBag } from "lucide-react"
+import { useState } from "react";
+import FormModalButton from "./FormModalButton";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-white">
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
-            <Recycle className="h-6 w-6 text-green-600" />
+          <Link href="https://www.instagram.com/consultoriarepet/" className="flex items-center gap-2 font-bold text-xl" target="_blank">
+            <Image
+              src="logo.png?height=550&width=550"
+              width={35}
+              height={35}
+              alt="Logo RePet"
+            />
             <span>RePet</span>
           </Link>
           <nav className="hidden md:flex gap-6">
@@ -25,57 +33,31 @@ export default function Home() {
               Contato
             </Link>
           </nav>
-          <Link
-            href="#contact"
-            className="inline-flex h-9 items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-green-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-          >
-            Participe
-          </Link>
+          <FormModalButton />
         </div>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-50">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                    Sempre Reciclando e Inovando
-                  </h1>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl">
-                    Transformando resíduos alimentares em soluções sustentáveis para cuidados com animais.
-                  </p>
-                </div>
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 relative bg-cover bg-center bg-[url('/bg.jpg')]">
+          <div className="absolute inset-0 bg-black/30 z-0"></div> {/* overlay escuro com 50% de opacidade */}
+          <div className="relative z-10">
+          </div>
+          <div className="container px-4 md:px-6 ">
+            <div className="center flex h-full items-center justify-center">
+              <div className="flex flex-col justify-center items-center space-y-4 text-center">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white drop-shadow-lg">
+                  Transforme o <span className="text-green-500">desperdício</span> <br /> em <span className="text-green-500">alimento</span> para os animais
+                </h1>
+                <p className="max-w-[800px] text-gray-200 md:text-xl drop-shadow-md">
+                  Um novo destino para os alimentos - um futuro melhor para o planeta.
+                </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link
-                    href="#mission"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-green-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-green-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  >
-                    Saiba Mais
-                  </Link>
-                  <Link
-                    href="#contact"
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  >
-                    Contate-nos
-                  </Link>
                 </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/placeholder.svg?height=550&width=550"
-                  width={550}
-                  height={550}
-                  alt="Imagem Principal RePet"
-                  className="rounded-lg object-cover"
-                  priority
-                />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="about" className="w-full py-5 md:py-24 lg:py-15">
           <div className="container px-4 md:px-6">
             <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center space-y-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre o RePet</h2>
@@ -84,9 +66,9 @@ export default function Home() {
                 alimentares em uma solução sustentável para o cuidado animal.
               </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+            <div className="mx-auto grid max-w-5xl items-center gap-6 py-8 lg:grid-cols-2 lg:gap-12">
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src="/esamc.jpg?height=400&width=400"
                 width={400}
                 height={400}
                 alt="Sobre o RePet"
@@ -98,9 +80,7 @@ export default function Home() {
                     <div className="grid gap-1">
                       <h3 className="text-xl font-bold">Nossa História</h3>
                       <p className="text-gray-500">
-                        Ao coletar alimentos próximos à data de validade, o RePet os reutiliza com segurança para
-                        produzir ração canina nutritiva, promovendo a economia circular, reduzindo o impacto ambiental e
-                        beneficiando supermercados, indústrias de ração animal e proprietários conscientes.
+                        A RePet nasceu como um projeto universitário na ESAMC Uberlândia com objetivo de conectar supermercados com produtos próximos do vencimento a indústrias de pet food, que os reaproveitam para produzir rações sustentáveis e saudáveis, promovendo a economia circular e o bem-estar animal sem desperdício.
                       </p>
                     </div>
                   </li>
@@ -181,10 +161,9 @@ export default function Home() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
                   <Leaf className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Meio Ambiente</h3>
+                <h3 className="text-xl font-bold">Indústrias PetFood</h3>
                 <p className="text-center text-gray-500">
-                  Menos resíduos alimentares em aterros significa redução de emissões de gases de efeito estufa e
-                  impacto ambiental.
+                  Menor custo de produção significa acesso contínuo e sustentável a insumos de qualidade por um preço reduzido.
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-4 rounded-lg border p-6 shadow-sm">
@@ -210,13 +189,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row lg:justify-end">
-              <Link
-                href="#"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-green-600 px-8 text-sm font-medium text-white shadow transition-colors hover:bg-green-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-              >
-                Participe
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              <FormModalButton />
               <Link
                 href="#"
                 className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
