@@ -17,7 +17,7 @@ export default function Home() {
               height={35}
               alt="Logo RePet"
             />
-            <span>RePet</span>
+            <span>@consultoriarepet</span>
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link href="#about" className="text-sm font-medium hover:underline underline-offset-4">
